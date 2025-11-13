@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Pedidos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h2>🛒 Mis Pedidos</h2>
+  </header>
+
+  <main>
+    <section id="lista-pedidos"></section>
+  </main>
+
+  <footer>
+    <nav class="bottom-nav">
+      <a href="index.html">Inicio</a>
+      <a href="Promociones.html">Promociones</a>
+      <a href="pedidos.html" class="active">Pedidos</a>
+      <a href="perfil.html">Mi Perfil</a>
+    </nav>
+  </footer>
+
+  <script>
+    // Cargar el carrito guardado
+    const lista = document.getElementById('lista-pedidos');
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    if (carrito.length === 0) {
+      lista.innerHTML = "<p>No tienes pedidos todavía.</p>";
+    } else {
+      lista.innerHTML = "<ul>" + carrito.map(p => `<li>${p}</li>`).join('') + "</ul>";
+    }
+  </script>
+</body>
+</html>
